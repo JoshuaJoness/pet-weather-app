@@ -47,7 +47,7 @@ const Pet = (params, props, history) => {
 	useEffect(() => {
 		console.log(params.location.pathname.split('/')[2]);
 		let id = params.location.pathname.split('/')[2]
-		axios.get(`http://localhost:4000/pet/${id}`)
+		axios.get(`${process.env.REACT_APP_API}/pet/${id}`)
 			.then(res => {
 				console.log(res.data);
 				setName(res.data.name)

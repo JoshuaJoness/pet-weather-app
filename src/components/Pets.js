@@ -36,7 +36,7 @@ const Pets = () => {
 	}
 
 	useEffect(() => {
-	  axios.get('http://localhost:4000/pet')
+	  axios.get(`${process.env.REACT_APP_API}/pet`)
 		.then(res => {
 			console.log(res.data);
 			setPets(res.data)

@@ -56,7 +56,7 @@ const CreatePet = (props,history) => {
 		e.preventDefault()
 		console.log(name, type, breed, location, latitude, longitude)
 		if (name && type && breed && location && latitude && longitude) {
-				axios.post('http://localhost:4000/pet',
+				axios.post(`${process.env.REACT_APP_API}/pet`,
 				{
 					name:name, type:type, breed:breed, location:location, latitude:latitude, longitude:longitude
 				}
