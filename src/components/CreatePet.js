@@ -3,8 +3,10 @@ import axios from 'axios'
 import '../styles/global.css'
 import Nav from './Nav'
 import Geocode from "react-geocode";
+import { useHistory } from 'react-router'
 
-const CreatePet = (props,history) => {
+const CreatePet = (props) => {
+	const history = useHistory();
 	const [name, setName] = useState('')
 	const [type, setType] = useState('')
 	const [breed, setBreed] = useState('')

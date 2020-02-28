@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../styles/global.css'
 import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router'
 
-const Pet = (params, props, history) => {
+const Pet = (params, props) => {
+	const history = useHistory();
 	const [name, setName] = useState('')
 	const [type, setType] = useState('')
 	const [breed, setBreed] = useState('')
@@ -55,20 +57,25 @@ const Pet = (params, props, history) => {
 	}
 
 	useEffect(() => {
-		console.log(params.location.pathname.split('/')[2]);
-		let id = params.location.pathname.split('/')[2]
-		axios.get(`${process.env.REACT_APP_API}/pet/${id}`)
-			.then(res => {
-				console.log(res.data);
-				setName(res.data.name)
-				setType(res.data.type)
-				setBreed(res.data.breed)
-				setLocation(res.data.location)
-				setLatitude(res.data.latitude)
-				setLongitude(res.data.longitude)
-			}).catch(err => {
-				console.log(err);
-			})
+		let token = localStorage.getItem('token')
+			if (token) {
+				console.log(params.location.pathname.split('/')[2]);
+				let id = params.location.pathname.split('/')[2]
+				axios.get(`${process.env.REACT_APP_API}/pet/${id}`)
+					.then(res => {
+						console.log(res.data);
+						setName(res.data.name)
+						setType(res.data.type)
+						setBreed(res.data.breed)
+						setLocation(res.data.location)
+						setLatitude(res.data.latitude)
+						setLongitude(res.data.longitude)
+					}).catch(err => {
+						console.log(err);
+					})
+				} else {
+					history.push('/signup')
+				}
 	}, []);
 
 	useEffect(() => {

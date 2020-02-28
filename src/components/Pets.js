@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import Nav from './Nav'
 import Pin from './Pin'
 import GoogleMapReact from 'google-map-react';
+import { useHistory } from 'react-router'
 
 const Pets = (props) => {
+	const history = useHistory();
 	const [pets, setPets] = useState([])
 	const key= 'AIzaSyCVJkF4x11QI221vToWHyVvM4voNYuYbwU'
 	const center= {
@@ -58,13 +60,18 @@ const Pets = (props) => {
 	}
 
 	useEffect(() => {
-	  axios.get(`${process.env.REACT_APP_API}/pet`)
-		.then(res => {
-			console.log(res.data);
-			setPets(res.data)
-		}).catch(err => {
-			console.log(err);
-		})
+		let token = localStorage.getItem('token')
+			if (token) {
+				axios.get(`${process.env.REACT_APP_API}/pet`)
+				.then(res => {
+					console.log(res.data);
+					setPets(res.data)
+				}).catch(err => {
+					console.log(err);
+				})
+			} else {
+				history.push('/signup')
+			}
 	}, []);
 
 	return(
