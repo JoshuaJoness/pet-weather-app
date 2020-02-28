@@ -66,6 +66,7 @@ const SignUp = () => {
 			marginLeft:'11%'
 		}
 	}
+	
 	const submit = (e) => {
 		console.log(name, password);
 		e.preventDefault()
@@ -86,7 +87,6 @@ const SignUp = () => {
 						console.log(err);
 					})
 				}
-
 
 	return(
 		<div style={{height:'100vh',backgroundColor:'#6C63FF'}}>
