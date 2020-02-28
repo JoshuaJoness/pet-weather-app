@@ -30,7 +30,7 @@ const Nav = () => {
 	}
 	return(
 		<div style={styles.nav}>
-			<Link className='logo' to='./'>
+			<Link className='logo' to='./pets'>
 				<i class="fas fa-cat" style={styles.logo}></i>
 			</Link>
 			<div></div>
