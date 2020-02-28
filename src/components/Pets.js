@@ -40,7 +40,8 @@ const Pets = (props) => {
 		},
 		img: {
 			width:'300px',
-			marginTop:'10px'
+			marginTop:'10px',
+			marginLeft:'140px'
 		},
 		name: {
 			borderTop:'1px solid black',
@@ -75,10 +76,10 @@ const Pets = (props) => {
 	return(
 		<div style={styles.outerContainer}>
 			<Nav />
-			<div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr'}}>
-			<div></div>
-			<img src='/cats.png' alt='Drawing of cats' style={styles.img}></img>
-			<div></div>
+			<div style={{display:'grid', gridTemplateColumns:'30% 40% 30%'}}>
+				<div></div>
+				<img src='/cats.png' alt='Drawing of cats' style={styles.img}></img>
+				<div></div>
 			</div>
 			<h1 style={styles.header}>Does my pet need an umbrella?</h1>
 			<h2 style={styles.subHeader}>Select a pet to find out!</h2>
