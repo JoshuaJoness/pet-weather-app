@@ -12,6 +12,7 @@ const Pet = (params, props) => {
 	const [location, setLocation] = useState('')
 	const [latitude, setLatitude] = useState('')
 	const [longitude, setLongitude] = useState('')
+	const [average, setAverage] = useState(0)
 	const key = 'e80d091f7987dbcb4a42006a3bf58bce'
 	const [umbrellaNeeded, setUmbrellaNeeded] = useState(false)
 	const styles = {
@@ -91,8 +92,14 @@ const Pet = (params, props) => {
 	useEffect(() => {
 		axios.get(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${key}/${latitude},${longitude}`)
 			.then(res => {
-				console.log('dark-sky response',res.data.hourly.data[0].precipProbability, res.data.hourly.data[1].precipProbability);
-				if (res.data.hourly.data[0].precipProbability > 0.5 || res.data.hourly.data[1].precipProbability > 0.5) {
+				console.log('dark-sky response',res.data.hourly.data, res.data.hourly.data[1].precipProbability);
+				let length = res.data.hourly.data.length
+				let array = res.data.hourly.data.map((hour, index) => hour.precipProbability)
+				let sum = array.reduce((sum, x) => sum + x);
+				let average = sum/length
+				setAverage(average)
+				console.log('Testing to ensure that my logic returns the correct sum. Used array to calculate manually.',average,array);
+				if (average > 0.5) {
 					setUmbrellaNeeded(true)
 				} else {
 					setUmbrellaNeeded(false)
@@ -131,13 +138,13 @@ const Pet = (params, props) => {
 					umbrellaNeeded ?
 					<div>
 						<h1 style={styles.header}>Yup!</h1>
-						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>According to the forecast, there's a greater than 50% chance of rain within the next 2 hours in {location}. {name} should bring an umbrella!</p>
+						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>According to the forecast, there's a greater than {Math.ceil(average * 100) / 100}% chance of rain in {location}. {name} should bring an umbrella!</p>
 						<Link to='/pets'><h1>Look up a different pet!</h1></Link>
 					</div>
 					:
 					<div>
 						<h1 style={styles.header}>Nope!</h1>
-						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>There's less than a 50% chance of rain within the next 2 hours in {location}. {name} doesn't need an umbrella.</p>
+						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>There's only a {Math.ceil(average * 100) / 100}% chance of rain. {name} doesn't need an umbrella.</p>
 						<Link to='/pets'><h1 style={styles.link}>Look up a different pet!</h1></Link>
 					</div>
 				}
