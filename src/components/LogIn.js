@@ -69,10 +69,11 @@ const LogIn = () => {
 
 	const submit = (e) => {
 		console.log(name, password);
+		let nameToLower = name.toLowerCase()
 		e.preventDefault()
 		axios.post(`${process.env.REACT_APP_API}/login`,
 		{
-			name:name, password:password
+			name:nameToLower, password:password
 		}).then(res => {
 				if (res.data !== 'err') {
 					console.log('response', res.data);

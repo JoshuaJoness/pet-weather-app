@@ -66,13 +66,14 @@ const SignUp = () => {
 			marginLeft:'11%'
 		}
 	}
-	
+
 	const submit = (e) => {
-		console.log(name, password);
+		console.log('TEST',name.toLowerCase(), password);
+		let nameToLower = name.toLowerCase()
 		e.preventDefault()
 		axios.post(`${process.env.REACT_APP_API}/signup`,
 		{
-			name:name, password:password
+			name:nameToLower, password:password
 		}).then(res => {
 						console.log('response', res.data);
 						if (res.data !== 'Sorry, that name already exists. Please choose another.') {
