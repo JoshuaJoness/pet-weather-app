@@ -87,7 +87,7 @@ const CreatePet = (props) => {
 						if (res.data == 'Sorry, name already exists!') {
 							alert('Sorry, name already exists! Please pick another name!')
 						} else {
-							props.history.push('/')
+							props.history.push('/pets')
 						}
 					}).catch(err => {
 						console.log(err);
