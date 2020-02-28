@@ -11,8 +11,23 @@ button:hover {
 body {
   margin: 0;
   padding: 0;
+	font-family: Helvetica, sans-serif;
 }
 
 .logo {
 	color: black;
+}
+
+.logo:hover {
+	color: white;
+}
+
+table, th, td {
+  padding: 10px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.pin:hover {
+	cursor: pointer;
 }

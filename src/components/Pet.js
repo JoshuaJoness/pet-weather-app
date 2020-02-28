@@ -16,8 +16,11 @@ const Pet = (params, props, history) => {
 		header: {
 			textAlign:'center',
 			marginTop: '50px',
+			fontSize: '55px',
+		},
+		subHeader: {
 			fontSize: '45px',
-			fontFamily: 'Helvetica, "sans-serif"'
+			lineHeight: '1.5'
 		},
 		container: {
 			border:'black 1.5px solid',
@@ -26,7 +29,6 @@ const Pet = (params, props, history) => {
 			marginLeft:'auto',
 			marginRight:'auto',
 			marginTop:'100px',
-			fontFamily: 'Helvetica, "sans-serif"'
 		},
 		img: {
 			height:'250px',
@@ -41,6 +43,14 @@ const Pet = (params, props, history) => {
 		icon: {
 			fontSize: 30,
 			margin: 15
+		},
+		outerContainer: {
+			display:'grid',
+			gridTemplateColumns:'1fr 1fr',
+			marginRight: 100
+		},
+		link: {
+			textAlign: 'center'
 		}
 	}
 
@@ -82,23 +92,38 @@ const Pet = (params, props, history) => {
 			<Link className='link' to='/'>
 				<i class="fas fa-arrow-left" style={styles.icon}></i>
 			</Link>
-			<h1 style={styles.header}>This is {name} the {type}</h1>
-			<div style={styles.container}>
-				<img src='/cat.png' alt='Drawing of cat.' style={styles.img}></img>
-				<div style={styles.attributes}>
-					<p><b>Name:</b> {name}</p>
-					<p><b>Type:</b> {type}</p>
-					<p><b>Breed:</b> {breed}</p>
-					<p><b>Location:</b> {location}</p>
-					<p><b>Latitude:</b> {latitude}</p>
-					<p><b>Longitude:</b> {longitude}</p>
-					{
-						umbrellaNeeded ?
-						<p>According to the forecast, there's a greater than 50% chance of rain within the next 2 hours. You should bring an umbrella!</p>
-						:
-						<p>There's a less than 50% chance of rain within the next 2 hours. You should be alright without an umbrella!</p>
-					}
+			<div style={styles.outerContainer}>
+				<div style={styles.container}>
+					<img src='/cat.png' alt='Drawing of cat.' style={styles.img}></img>
+					<div style={styles.attributes}>
+						<p><b>Name:</b> {name}</p>
+						<p><b>Type:</b> {type}</p>
+						<p><b>Breed:</b> {breed}</p>
+						<p><b>Location:</b> {location}</p>
+						<p><b>Latitude:</b> {latitude}</p>
+						<p><b>Longitude:</b> {longitude}</p>
+						{
+							umbrellaNeeded ?
+							<p>According to the forecast, there's a greater than 50% chance of rain within the next 2 hours in {location}. You should bring an umbrella!</p>
+							:
+							<p>There's a less than 50% chance of rain within the next 2 hours in {location}. You should be alright without an umbrella!</p>
+						}
+					</div>
 				</div>
+				{
+					umbrellaNeeded ?
+					<div>
+						<h1 style={styles.header}>Yup!</h1>
+						<p style={styles.subHeader}>According to the forecast, there's a greater than 50% chance of rain within the next 2 hours in {location}. {name} should bring an umbrella!</p>
+						<Link to='/'><h1>Look up a different pet!</h1></Link>
+					</div>
+					:
+					<div>
+						<h1 style={styles.header}>Nope!</h1>
+						<p style={styles.subHeader}>There's less than a 50% chance of rain within the next 2 hours in {location}. {name} doesn't need an umbrella.</p>
+						<Link to='/'><h1 style={styles.link}>Look up a different pet!</h1></Link>
+					</div>
+				}
 			</div>
 		</div>
 	)
