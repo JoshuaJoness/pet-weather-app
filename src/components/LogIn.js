@@ -76,7 +76,7 @@ const LogIn = () => {
 		}).then(res => {
 						console.log('response', res.data);
 						localStorage.setItem('token', res.data)
-						history.push('/')
+						history.push('/pets')
 						console.log('Success')
 					}).catch(err => {
 						console.log(err);

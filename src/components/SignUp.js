@@ -76,7 +76,7 @@ const SignUp = () => {
 						console.log('response', res.data);
 						if (res.data !== 'Sorry, that name already exists. Please choose another.') {
 							localStorage.setItem('token', res.data)
-							history.push('/')
+							history.push('/pets')
 							console.log(localStorage.getItem('token'));
 						} else {
 							e.preventDefault()
