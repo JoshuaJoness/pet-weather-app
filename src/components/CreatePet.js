@@ -48,7 +48,7 @@ const CreatePet = (props) => {
 			height: 35,
 			marginLeft: 'auto',
 			marginRight: 'auto',
-			color:'salmon',
+			color:'#6C63FF',
 			border:'1px solid grey',
 			borderRadius: '4px',
 			background:'',
