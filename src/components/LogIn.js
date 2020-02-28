@@ -74,14 +74,18 @@ const LogIn = () => {
 		{
 			name:name, password:password
 		}).then(res => {
-						console.log('response', res.data);
-						localStorage.setItem('token', res.data)
-						history.push('/pets')
-						console.log('Success')
-					}).catch(err => {
-						console.log(err);
-					})
+				if (res.data !== 'err') {
+					console.log('response', res.data);
+					localStorage.setItem('token', res.data)
+					history.push('/pets')
+					console.log('Success')
+				} else {
+					alert("No such user found.")
 				}
+			}).catch(err => {
+					console.log(err);
+				})
+			}
 
 	return(
 		<div style={{height:'100vh',backgroundColor:'#6C63FF'}}>
