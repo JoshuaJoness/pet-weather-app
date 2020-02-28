@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router'
 
-const Nav = () => {
+const Footer = () => {
 	const history = useHistory();
 	const styles = {
 		nav:{
@@ -12,11 +12,8 @@ const Nav = () => {
 			padding: 0,
 			margin: 0,
 			display: 'grid',
-			gridTemplateColumns: '10% 80% 10%'
-		},
-		logo:{
-			fontSize: 40,
-			margin: 5
+			gridTemplateColumns: '90% 10%',
+			marginTop:'200px'
 		},
 		button:{
 			margin: 10,
@@ -31,17 +28,17 @@ const Nav = () => {
 		}
 	}
 
+	const logOut = () => {
+		localStorage.removeItem('token')
+		history.push('/signup')
+	}
+
 	return(
 		<div style={styles.nav}>
-			<Link className='logo' to='./pets'>
-				<i class="fas fa-cat" style={styles.logo}></i>
-			</Link>
 			<div></div>
-			<Link to='./create'>
-				<button style={styles.button}><b>Add Pet</b></button>
-			</Link>
+			<button style={styles.button} onClick={logOut}><b>Log-out</b></button>
 		</div>
 	)
 }
 
-export default Nav
+export default Footer

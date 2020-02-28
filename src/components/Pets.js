@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Nav from './Nav'
 import Pin from './Pin'
+import Footer from './Footer'
 import GoogleMapReact from 'google-map-react';
 import { useHistory } from 'react-router'
 
@@ -46,9 +47,6 @@ const Pets = (props) => {
 			marginTop:'10px',
 			textAlign:'center',
 			textDecoration: 'none'
-		},
-		outerContainer: {
-			marginBottom: 150
 		},
 		table: {
 			width:"80%",
@@ -120,7 +118,7 @@ const Pets = (props) => {
 					}
         </GoogleMapReact>
       </div>
-
+			<Footer />
 		</div>
 	)
 }
