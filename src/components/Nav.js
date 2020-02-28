@@ -14,6 +14,15 @@ const Nav = () => {
 			display: 'grid',
 			gridTemplateColumns: '10% 80% 10%'
 		},
+		navAlt:{
+			height: 50,
+			width: '100%',
+			backgroundColor: '#6C63FF',
+			padding: 0,
+			margin: 0,
+			display: 'grid',
+			gridTemplateColumns: '10% 50% 10%'
+		},
 		logo:{
 			fontSize: 40,
 			margin: 5
@@ -32,7 +41,7 @@ const Nav = () => {
 	}
 
 	return(
-		<div style={styles.nav}>
+		<div style={window.innerWidth < 1366 ? styles.navAlt : styles.nav}>
 			<Link className='logo' to='./pets'>
 				<i class="fas fa-cat" style={styles.logo}></i>
 			</Link>

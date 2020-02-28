@@ -15,6 +15,16 @@ const Footer = () => {
 			gridTemplateColumns: '90% 10%',
 			marginTop:'600px'
 		},
+		navAlt:{
+			height: 50,
+			width: '100%',
+			backgroundColor: '#6C63FF',
+			padding: 0,
+			margin: 0,
+			display: 'grid',
+			gridTemplateColumns: '60% 10%',
+			marginTop:'600px'
+		},
 		button:{
 			margin: 10,
 			height: 35,
@@ -34,7 +44,7 @@ const Footer = () => {
 	}
 
 	return(
-		<div style={styles.nav}>
+		<div style={window.innerWidth < 1366 ? styles.navAlt : styles.nav}>
 			<div></div>
 			<button style={styles.button} onClick={logOut}><b>Log-out</b></button>
 		</div>

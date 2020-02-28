@@ -24,6 +24,12 @@ const Pet = (params, props) => {
 			fontSize: '45px',
 			lineHeight: '1.5'
 		},
+		subHeaderAlt:{
+			fontSize: '38px',
+			lineHeight: '1.5',
+			marginLeft: '20px',
+			marginRight: '20px'
+		},
 		container: {
 			border:'black 1.5px solid',
 			borderRadius:'6px',
@@ -50,6 +56,10 @@ const Pet = (params, props) => {
 			display:'grid',
 			gridTemplateColumns:'1fr 1fr',
 			marginRight: 100
+		},
+		outerContainerAlt: {
+			display:'grid',
+			gridTemplateRows:'1fr 1fr'
 		},
 		link: {
 			textAlign: 'center'
@@ -99,7 +109,7 @@ const Pet = (params, props) => {
 			<Link className='link' to='/pets'>
 				<i class="fas fa-arrow-left" style={styles.icon}></i>
 			</Link>
-			<div style={styles.outerContainer}>
+			<div style={window.innerWidth < 1366 ? styles.outerContainerAlt : styles.outerContainer}>
 				<div style={styles.container}>
 					<img src='/cat.png' alt='Drawing of cat.' style={styles.img}></img>
 					<div style={styles.attributes}>
@@ -121,13 +131,13 @@ const Pet = (params, props) => {
 					umbrellaNeeded ?
 					<div>
 						<h1 style={styles.header}>Yup!</h1>
-						<p style={styles.subHeader}>According to the forecast, there's a greater than 50% chance of rain within the next 2 hours in {location}. {name} should bring an umbrella!</p>
+						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>According to the forecast, there's a greater than 50% chance of rain within the next 2 hours in {location}. {name} should bring an umbrella!</p>
 						<Link to='/pets'><h1>Look up a different pet!</h1></Link>
 					</div>
 					:
 					<div>
 						<h1 style={styles.header}>Nope!</h1>
-						<p style={styles.subHeader}>There's less than a 50% chance of rain within the next 2 hours in {location}. {name} doesn't need an umbrella.</p>
+						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>There's less than a 50% chance of rain within the next 2 hours in {location}. {name} doesn't need an umbrella.</p>
 						<Link to='/pets'><h1 style={styles.link}>Look up a different pet!</h1></Link>
 					</div>
 				}

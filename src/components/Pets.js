@@ -43,6 +43,11 @@ const Pets = (props) => {
 			marginTop:'10px',
 			marginLeft:'140px'
 		},
+		altImg:{
+			width:'300px',
+			marginTop:'10px',
+			marginLeft:'35px'
+		},
 		name: {
 			borderTop:'1px solid black',
 			marginTop:'10px',
@@ -55,6 +60,9 @@ const Pets = (props) => {
 			border: '1px solid black',
 			marginLeft:'auto',
 			marginRight:'auto'
+		},
+		outerContainer: {
+			width: '100vw'
 		}
 	}
 
@@ -74,13 +82,19 @@ const Pets = (props) => {
 	}, []);
 
 	return(
-		<div style={styles.outerContainer}>
+		<div style={window.innerWidth < 1366 ? styles.outerContainer : null}>
 			<Nav />
-			<div style={{display:'grid', gridTemplateColumns:'30% 40% 30%'}}>
-				<div></div>
-				<img src='/cats.png' alt='Drawing of cats' style={styles.img}></img>
-				<div></div>
-			</div>
+			{
+				window.innerWidth < 450 ?
+				<img src='/cats.png' alt='Drawing of cats' style={styles.altImg}></img>
+				:
+				<div style={{display:'grid', gridTemplateColumns:'30% 40% 30%'}}>
+					<div></div>
+					<img src='/cats.png' alt='Drawing of cats' style={styles.img}></img>
+					<div></div>
+				</div>
+			}
+
 			<h1 style={styles.header}>Does my pet need an umbrella?</h1>
 			<h2 style={styles.subHeader}>Select a pet to find out!</h2>
 			<table style={styles.table}>
