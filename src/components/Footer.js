@@ -13,7 +13,7 @@ const Footer = () => {
 			margin: 0,
 			display: 'grid',
 			gridTemplateColumns: '90% 10%',
-			marginTop:'200px'
+			marginTop:'600px'
 		},
 		button:{
 			margin: 10,
