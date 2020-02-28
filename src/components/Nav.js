@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router'
 
 const Nav = () => {
+	const history = useHistory();
 	const styles = {
 		nav:{
 			height: 50,
@@ -10,7 +12,7 @@ const Nav = () => {
 			padding: 0,
 			margin: 0,
 			display: 'grid',
-			gridTemplateColumns: '10% 80% 10%'
+			gridTemplateColumns: '10% 70% 10% 10%'
 		},
 		logo:{
 			fontSize: 40,
@@ -28,6 +30,12 @@ const Nav = () => {
 			textAlign: 'center'
 		}
 	}
+
+	const logOut = () => {
+		localStorage.removeItem('token')
+		history.push('/signup')
+	}
+
 	return(
 		<div style={styles.nav}>
 			<Link className='logo' to='./pets'>
@@ -37,6 +45,7 @@ const Nav = () => {
 			<Link to='./create'>
 				<button style={styles.button}><b>Add Pet</b></button>
 			</Link>
+			<button style={styles.button} onClick={logOut}><b>Log-out</b></button>
 		</div>
 	)
 }
