@@ -128,9 +128,9 @@ const Pet = (params, props) => {
 						<p><b>Longitude:</b> {longitude}</p>
 						{
 							umbrellaNeeded ?
-							<p>According to the forecast, there's a greater than 50% chance of rain within the next 2 hours in {location}. You should bring an umbrella!</p>
+							<p>According to the forecast, there's a greater than {average.toFixed(3)}% chance of rain in {location}. {name} should bring an umbrella!</p>
 							:
-							<p>There's a less than 50% chance of rain within the next 2 hours in {location}. You should be alright without an umbrella!</p>
+							<p>There's only a {average.toFixed(3)}% chance of rain. {name} doesn't need an umbrella.</p>
 						}
 					</div>
 				</div>
@@ -138,13 +138,13 @@ const Pet = (params, props) => {
 					umbrellaNeeded ?
 					<div>
 						<h1 style={styles.header}>Yup!</h1>
-						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>According to the forecast, there's a greater than {Math.ceil(average * 100) / 100}% chance of rain in {location}. {name} should bring an umbrella!</p>
+						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>According to the forecast, there's a greater than {average.toFixed(3)}% chance of rain in {location}. {name} should bring an umbrella!</p>
 						<Link to='/pets'><h1>Look up a different pet!</h1></Link>
 					</div>
 					:
 					<div>
 						<h1 style={styles.header}>Nope!</h1>
-						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>There's only a {Math.ceil(average * 100) / 100}% chance of rain. {name} doesn't need an umbrella.</p>
+						<p style={window.innerWidth < 1366 ? styles.subHeaderAlt : styles.subHeader}>There's only a {average.toFixed(3)}% chance of rain. {name} doesn't need an umbrella.</p>
 						<Link to='/pets'><h1 style={styles.link}>Look up a different pet!</h1></Link>
 					</div>
 				}
