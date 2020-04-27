@@ -10,7 +10,7 @@ import { useHistory } from 'react-router'
 const Pets = (props) => {
 	const history = useHistory();
 	const [pets, setPets] = useState([])
-	const key= 'AIzaSyCVJkF4x11QI221vToWHyVvM4voNYuYbwU'
+	const key= 'AIzaSyDULQwvFtkDR9dZxg-4eV0qBBc_-8HxpvI'
 	const center= {
   	lat: 0.000,
   	lng: 0.000
